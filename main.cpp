@@ -1,21 +1,32 @@
 #include <iostream>
-
+#include <algorithm>
 using namespace std;
+const int MAX_SIZE = 100;
+void zamjena(int arr[],int size){
+int left=0;
+int right=size-1;
+while(left<right){
 
-int main()
-{
- int a;
- int b;
- cout << "Upisite zeljene brojeve" << endl;
- cin >> a;
- cin >> b;
-  int c;
-  c=(a*a+b*b);
-  int resenje;
-  resenje=c*c;
-  if(c>10)
-  cout << "Dvocifren pitagorin broj je " << resenje << endl;
-  else
-    cout << "Broj nije pitagorin" << endl;
-return 0;
+    if(arr[left]%2==1){
+        left++;
+    } else if(arr[right]%2==0){
+    right--;
+    } else {
+    swap(arr[left],arr[right]);
+    left++;
+    right--;
+   }
+  }
+}
+int main(){
+int arr[]={1,2,3,4,5,6,7,8,9,10};
+int size=sizeof(arr) / sizeof(int);
+zamjena(arr,size);
+for(int i=0;i<size;i++){
+
+  cout << arr[i] << "  ";
+
+}
+cout << endl;
+    return 0;
 }
